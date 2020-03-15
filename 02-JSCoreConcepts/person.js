@@ -4,14 +4,17 @@ class Person {
 		this.lastName = lastName; 
   	}
 	fullName() { 
-  	return `${this.firstName} ${this.lastName.toUpperCase()} `
+  		return `${this.firstName} ${this.lastName.toUpperCase()} `
 	}
   	initials() {
-	  return `${this.firstName[0]}.${this.lastName[0]}.`
- 	}
+  		return `${this.firstName[0]}.${this.lastName[0]}.`
+  	}
 }
 
-person = new Person("Ania", "Kowalska");
+jan = new Person("Jan", "Nowak");
+sebastian = new Person("Sebastian", "Krawczyk")
 
-console.log(person.fullName())
-console.log(person.initials())
+console.log(jan.fullName());
+console.log(jan.initials());
+console.log(sebastian.fullName());
+console.log(sebastian.initials());
