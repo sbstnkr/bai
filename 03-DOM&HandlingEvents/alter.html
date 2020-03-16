@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<h1>Another Brick in the Wall</h1>
+		<h1 onclick="appendText()">Another Brick in the Wall</h1>
 		<h3>Pink Floyd</h3>
 		<p>We don't need no education<br>
 		We don't need no thought control<br>
@@ -20,7 +20,14 @@
 		and psychedelic music.</p>
 		
 		<script>
-			// a JavaScript code here ...
+			function appendText() {
+				let title = document.getElementsByTagName("h1")[0]
+				let getPart2 = document.getElementsByTagName("p")[1].textContent
+				let newText = document.createTextNode(" "+getPart2)
+
+				return title.appendChild(newText)
+       
+      }
 			
 		</script>
 	</body>
