@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
+	<body ondblclick="makeBackgroundYellow()">
 		<h1 onclick="appendText()">Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+		<h3 onclick="descrDisplayed()">Pink Floyd</h3>
+		<p onclick="makeItalic()" oncopy="copyrightPopup()">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -21,14 +21,49 @@
 		
 		<script>
 			function appendText() {
-				let title = document.getElementsByTagName("h1")[0]
-				let getPart2 = document.getElementsByTagName("p")[1].textContent
-				let newText = document.createTextNode(" "+getPart2)
+				let title = document.getElementsByTagName("h1")[0];
+				let getPart2 = document.getElementsByTagName("p")[1].textContent;
+				let newText = document.createTextNode(" "+getPart2);
 
-				return title.appendChild(newText)
-       
+				return title.appendChild(newText);
+       			
+      }
+      
+      function descrDisplayed() {
+		let band = document.getElementsByTagName("h3")[0];
+		let descr = document.getElementsByTagName("p")[1].cloneNode(true);
+
+		descr.setAttribute("style", "visibility: visible;");
+		descr.setAttribute("onclick", "showBandPic()");
+
+		return band.insertAdjacentElement("afterend", descr);
+        
+      }
+      
+      function makeItalic() {
+		return document.querySelector("p:nth-last-of-type(2)").style.fontStyle = "italic";
+       			
+      }
+      
+      function makeBackgroundYellow() {
+		return document.body.style.backgroundColor = "yellow";
+       			
       }
 			
+      function copyrightPopup() {
+      		return alert("Copyrights!");
+      }
+      
+      function showBandPic() {
+      		let bandPic = document.createElement("img");
+      		let descr = document.getElementsByTagName("h3")[0].nextSibling;
+      
+      		bandPic.setAttribute("src", "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg")
+      
+      		return descr.insertAdjacentElement("afterend", bandPic);
+      
+      }
+      
 		</script>
 	</body>
 </html>
