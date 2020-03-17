@@ -20,7 +20,21 @@
     </ol>
 
     <script>
-    	// a JavaScript code here ...
+    	let submitButton = document.getElementsByTagName("button")[0];
+      
+        submitButton.onclick = submitItem
+      
+			function submitItem() {
+     		    let newItem = document.createElement("li");
+      	        let shopInput = document.getElementsByTagName("input")[0];
+                let shopList = document.getElementsByTagName("ol")[0];
+        
+                newItem.textContent = shopInput.value;
+       
+                return shopList.appendChild(newItem);
+      }
+        
+        
 
     </script>
 </body>
