@@ -15,9 +15,24 @@
 	</form>
 
 	<script>
-		// a JavaScript code here ...
-		var university = "Cracow University of Economics";
-		var address = "Rakowicka 27, Krakow, POLAND";
+		let submitButton = document.getElementsByTagName("button")[0];
+    
+    submitButton.onclick = insertField
+    
+    function insertField () {
+    	let university = "Cracow University of Economics";
+	let address = "Rakowicka 27, Krakow, POLAND";
+      
+      	let uniField = document.getElementsByTagName("input")[0];
+      	let addrField = document.getElementsByTagName("input")[1];
+      
+	uniField.setAttribute("placeholder", university)
+      	addrField.setAttribute("placeholder", address)
+      
+    
+    }
+    
+		
 
 	</script>
 </body>
