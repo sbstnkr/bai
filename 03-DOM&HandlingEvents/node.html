@@ -7,29 +7,31 @@
 	<body>
 		<script>
 			function createTable () {
-      	let bodyElem = document.getElementsByTagName("body")[0];
+      				let bodyElem = document.getElementsByTagName("body")[0];
         
-        let table = document.createElement("table");
-        let tableBody = document.createElement("tbody");
-        
-        table.appendChild(tableBody);
-        
-        for (let i = 0; i < 2; i++) {
-        	let tableRow = document.createElement("tr");
-          
-          tableBody.appendChild(tableRow);
-          
-          for (let j = 0; j < 2; j++) {
-          	let tableData = document.createElement("td");
-            let insideText = document.createTextNode(i+j+1);
-            
-            tableData.appendChild(insideText);
-            tableRow.appendChild(tableData);
-          }
-        }
-        bodyElem.appendChild(table)
-      }
-			createTable()
+				let table = document.createElement("table");
+				table.border = "1";
+
+				let tableBody = document.createElement("tbody");
+
+				table.appendChild(tableBody);
+
+				for (let i = 0; i < 2; i++) {
+					let tableRow = document.createElement("tr");
+
+				  	tableBody.appendChild(tableRow);
+
+				  for (let j = 0; j < 2; j++) {
+					let tableData = document.createElement("td");
+				    	let insideText = document.createTextNode(i+i+j+1);
+
+				    	tableData.appendChild(insideText);
+				    	tableRow.appendChild(tableData);
+          			}
+        		}
+        		bodyElem.appendChild(table);
+      		}
+		createTable()
 		</script>
 	</body>
 </html>
