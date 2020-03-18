@@ -6,7 +6,31 @@
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
+			function createTable {
+      	let bodyElem = document.getElementsByTagName("body")[0];
+        
+        let table = document.createElement("table");
+        let tableBody = document.createElement("tbody");
+        
+        table.appendChild(tableBody);
+        
+        for (let i = 0; i < 2; i++) {
+        	let tableRow = document.createElement("tr");
+          
+          tableBody.appendChild(tableRow);
+          
+          for (let j = 0; j < 2; i++) {
+          	let tableData = document.createElement("td");
+            
+            let insideText = document.createTextNode(i+j+1);
+            
+            tableData.appendChild(insideText);
+            
+            tableRow.appendChild(tableData)
+          }
+        }
+      
+      }
 			
 		</script>
 	</body>
