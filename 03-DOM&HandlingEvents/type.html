@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<title>Typing test</title>
@@ -23,7 +22,22 @@
 		<textarea rows="15" cols="50"></textarea><br>
 		
 		<script>
-			// a JavaScript code here ...
+   		let textArea = document.getElementsByTagName("textarea")[0];
+    		let results = document.createElement("p");
+      		let insertResults = textArea.insertAdjacentElement("afterend", results);
+      
+    		window.setTimeout(countWordsChars, 30000);
+      
+    		function countWordsChars () {      
+      			let words = document.getElementsByTagName("textarea")[0].value.split(" ").length;
+        		let chars = document.getElementsByTagName("textarea")[0].value.length;
+        
+        		let appendWordsChars = document.createTextNode(`Liczba wyrazów: ${words}, liczba znaków: ${chars}`);
+        
+        		return results.appendChild(appendWordsChars);    
+        
+      }
+			
 			
 		</script>
 		
