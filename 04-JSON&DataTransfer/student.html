@@ -19,12 +19,12 @@
                 if (this.readyState == 4 && this.status == 200) {
 	           let obj = JSON.parse(this.responseText);
                 
-                document.getElementById("personalData").innerHTML = obj[0].name;
+                document.getElementById("personalData").innerHTML = `${obj.name} ${obj.surname}`;
                     
                 console.log(obj)
                 }
                 }
-            xhr.open('get', 'file.json', true);
+            xhr.open('get', 'http://localhost/file.json', true);
             xhr.send();
             })
             
@@ -32,4 +32,3 @@
 
 	</body>
 </html>
-
