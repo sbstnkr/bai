@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Waluty</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Kursy walut</h1>
+		<p id="exchange"></p>
+
+		<script>
+            
+            window.onload = function () {
+                const xhr = new XMLHttpRequest();
+                
+            xhr.onload = function () {
+                if (this.readyState == 4 && this.status == 200) {
+	           let obj = JSON.parse(this.responseText);
+                
+                document.getElementById("exchange").innerHTML = `
+                EUR: ${obj[0].rates[7].mid} <br>
+                USD: ${obj[0].rates[1].mid} <br>
+                GBP: ${obj[0].rates[10].mid}`;
+                }
+                }
+            xhr.open('get', 'https://api.nbp.pl/api/exchangerates/tables/a/today/', true);
+            xhr.send();
+            }
+            
+		</script>
+
+	</body>
+</html>
