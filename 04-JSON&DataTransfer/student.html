@@ -20,8 +20,7 @@
 	           let obj = JSON.parse(this.responseText);
                 
                 document.getElementById("personalData").innerHTML = `${obj.name} ${obj.surname}`;
-                    
-                console.log(obj)
+                 
                 }
                 }
             xhr.open('get', 'http://localhost/file.json', true);
