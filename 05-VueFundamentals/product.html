@@ -3,22 +3,70 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body>
-  <h1>Grades</h1>    
-
+<body onload="lol();xd();">
+    <div id="app">
+        <p><span>RECEIPT<br></span>
+            -----------------<br>
+            Product: {{ product.name }}<br>
+            Unit Price: {{ part }} zł<br>
+            Quantity: {{ product.quantity }}<br>
+            Amount: {{ amount }} zł<br>
+            VAT Tax Rate: {{ product.VAT }}%<br>
+            =================<br>
+            <span>Total: {{ taxed }} zł</span>
+        </p>
+    </div>
   <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        product: {
-          name: 'book',
-          unitPrice: 17.5,
-          quantity: 3,
-          VAT: 23
+      var app = new Vue({
+          el: '#app',
+          data: {
+              product: { name: 'book',
+                          unitPrice: 17.5,
+                          quantity: 3,
+                          VAT: 23}
+          
+      },
+        computed: {
+            part: function () {
+                var priceString = this.product.unitPrice.toString();
+            return priceString.substring(0,2);
+        },
+            amount: function () {
+                var amount = this.product.quantity * this.part;
+                return amount;
+            },
+            taxed: function () {
+                var vat = this.product.VAT/100 + 1
+                var taxed = this.amount * vat;
+                return taxed;
+                
+            }
         }
-      }
-    });
-  </script>
-
+      });
+    </script>
+    <script>
+        let p = document.getElementsByTagName("p")[0]
+        
+        function fontChange() {
+            return p.setAttribute("style", "font-family: 'Courier New', Courier, monospace;");
+        }
+        
+        function boldChangeFirst() {
+            return p.firstChild.setAttribute("style", "font-weight: bold;");
+            
+        }
+        
+        function boldChangeLast() {
+            return p.lastChild.setAttribute("style", "font-weight: bold;");
+        }
+        
+        function all () {
+            fontChange();
+            boldChangeFirst();
+            boldChangeLast();
+        }
+        
+        window.onload = all;        
+    </script>
 </body>
 </html>
