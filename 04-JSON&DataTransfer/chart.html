@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Chart</title>
+		<meta charset="UTF-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="200"></canvas>
+        <script>
+            const xhr = new XMLHttpRequest();
+
+            xhr.onload = function () {
+	            let gold = JSON.parse(this.responseText);
+                let labels = gold.map(function(e) {return e.data;});
+                let data = gold.map(function(e) {return e.cena;});
+            
+            let ctx = document.getElementById("canvas").getContext('2d');
+            let config = {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Cena złota',
+                        data: data,
+                        backgroundColor: "#92a8d1"
+                    }]
+                }
+            };
+            
+            let myChart = new Chart(ctx, config);
+            }
+            xhr.open('get', 'http://api.nbp.pl/api/cenyzlota/last/10/?format=json', true);
+            xhr.send();
+            
+            
+        </script>
+    </body>
+</html>
