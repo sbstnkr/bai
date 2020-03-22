@@ -4,6 +4,21 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+    <div id="app">
+        <table >
+            <thead v-for="(item,index) in films" v-if="index == 0">
+                <th v-for="(value,name) in item"> {{ capitalise(name) }}</th>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in films">
+                    <td> {{ item.title }}</td>
+                    <td> {{ item.year }}</td>
+                    <td> {{ item.director }}</td>
+                    <td> {{ item.budget }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -34,9 +49,14 @@
             budget: 6000000
           }
         ] 
+        }, 
+        methods: {
+            capitalise: function (name) {
+                  return name.charAt(0).toUpperCase() + name.substring(1);
         }
+                      }
       }
-    });
+    );
   </script>
 </body>
 </html>
