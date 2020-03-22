@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
     <div id="app">
-        <table >
+        <table>
             <thead v-for="(item,index) in films" v-if="index == 0">
                 <th v-for="(value,name) in item"> {{ capitalise(name) }}</th>
             </thead>
@@ -58,5 +62,11 @@
       }
     );
   </script>
+    <script>
+        $("div").attr("style", "margin: auto;")
+        $("table").attr("style", "border: 1px solid black; border-collapse: collapse; width: 75%;")
+        $("table").find('*').attr("style", "border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;")
+        
+    </script>
 </body>
 </html>
