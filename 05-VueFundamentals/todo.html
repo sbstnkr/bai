@@ -6,7 +6,7 @@
 <body>
     <div id="app">
         DO WYKONANIA
-        <div v-for="(item,index) in todo">
+        <div v-for="(item,index) in sorted">
             {{ index+1 }}. {{ item }}
         </div>
     </div>
@@ -19,7 +19,13 @@
           'Feed cat',
           'Pay cable bill',
           'Go shopping' ]
-    }});
+        },
+        computed: {
+            sorted: function () {
+                return this.todo.sort()
+            }
+        }
+    });
   </script>
 
 </body>
