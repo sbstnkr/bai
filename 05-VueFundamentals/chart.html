@@ -6,7 +6,7 @@
 </head>
 <body>
     <div id="app">
-        <canvas id="canvas" width="300", height="200">{{ charted }}</canvas>
+        <canvas id="canvas" width="300", height="200">{{ makeChart }}</canvas>
     </div>
   <script>
     var app = new Vue({
@@ -36,7 +36,7 @@
         ] 
       },
         computed: {
-            charted: function () {
+            makeChart: function () {
                 let labels = this.films.map(function(e) {return e.language;});
                 let data = this.films.map(function(e) {return e.popularity;});
             
