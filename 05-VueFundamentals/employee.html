@@ -4,19 +4,63 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+    <div id="app" >
+        <div v-for="person in people">
+            <div v-if="person.foreigner == false" v-show="person.pesel !== ''">
+                <span>EMPLOYEE RECORD</span><br>
+                <div v-for="(value,name) in person" v-if="value !== null && name !== 'foreigner' && name !== 'nationality'">
+                    {{ capitalise(name) }}: {{ value }}
+                </div>
+                <br>
+            </div>
+            <div v-else="person.foreigner == true">
+                <span>EMPLOYEE RECORD</span><br>
+                <div v-for="(value,name) in person" v-if="value !== null && value !== '' && name !== 'foreigner'">
+                    {{ capitalise(name) }}: {{ value }}
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        name1: 'Adam',
-        name2: 'Jan',
-        surname: 'Majewski',
-        foreigner: false,
-        nationality: 'Polish',
-        pesel: '92021708229',
-        address: 'ul. Szeroka 3, Kraków',
-    });
+          people: {
+          adam: {
+            name1: 'Adam',
+            name2: 'Jan',
+            surname: 'Majewski',
+            foreigner: false,
+            nationality: 'Polish',
+            pesel: '92021708229',
+            address: 'ul. Szeroka 3, Kraków'},
+        john: {
+            name1: 'John',
+            name2: null,
+            surname: 'Brown',
+            foreigner: true,
+            nationality: 'USA',
+            pesel: '',
+            address: 'Holland Drive 4, Chicago'}}
+          
+    },
+        methods: {
+            capitalise: function (name) {
+                  return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+                      }
+                      });
   </script>
-
+    <script>
+        let mainDiv = document.getElementById("app")
+        let spans = document.getElementsByTagName("span")
+        
+        mainDiv.setAttribute("style", "font-family: 'Courier New', Courier, monospace;")
+        
+        Array.from(spans).forEach(x => x.setAttribute("style", "font-weight: bold;"))
+        
+        console.log(spans)
+    </script>
 </body>
 </html>
