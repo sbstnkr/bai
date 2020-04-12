@@ -24,6 +24,10 @@
         </table>
     </div>
   <script>
+    $("div").attr("style", "margin: auto;")
+    $("table").attr("style", "border: 1px solid black; border-collapse: collapse; width: 75%;")
+    $("table").find('*').attr("style", "border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;")  
+      
     var app = new Vue({
       el: '#app',
       data: {
@@ -62,11 +66,5 @@
       }
     );
   </script>
-    <script>
-        $("div").attr("style", "margin: auto;")
-        $("table").attr("style", "border: 1px solid black; border-collapse: collapse; width: 75%;")
-        $("table").find('*').attr("style", "border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;")
-        
-    </script>
 </body>
 </html>
