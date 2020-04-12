@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table id="table_id" class="display">
+            <thead>
+                <th v-for="(value,name) in people[0]"> {{ name }}</th>
+            </thead>
+            <tbody>
+                <tr v-for="item in people">
+                    <td> {{ item.name }}</td>
+                    <td> {{ item.surname }}</td>
+                    <td> {{ item.age }}</td>
+                    <td> {{ item.country }}</td>
+                    <td> {{ item.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  <script>
+      
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        people: null
+        }, 
+        methods: {
+            capitalise: function (name) {
+                  return name.charAt(0).toUpperCase() + name.substring(1);
+        }
+                      },
+         mounted: function () {
+         
+         	fetch('http://localhost/people.json')
+          .then(res => res.json())
+          .then(res => {
+            this.people = res
+            
+                $(document).ready( function () {
+            $('#table_id').DataTable( {
+                data: this.people
+            });
+                } );
+            }
+         )
+      }
+    });
+  </script>
+</body>
+</html>
