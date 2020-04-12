@@ -9,7 +9,7 @@
             {{ address }}<br>
             {{ postcode }} {{ city }}<br>
             tel. {{ landline }}, {{ mobile }}<br>
-            <a>{{ web }}</a><br>
+            <a :href="web">{{ web }}</a><br>
         </p>
     </div>
   <script>
@@ -42,8 +42,7 @@
     p.setAttribute("style", "text-align: center;");
     
     p.firstChild.setAttribute("style", "font-weight: bold;");
-        
-    a.setAttribute("href", "http://www.unikpol.pl")     
+            
   </script>
 </body>
 </html>
