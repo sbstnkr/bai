@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <th v-for="(value,name) in currency[0].rates[0]"> {{ capitalise(name) }}</th>
+            </thead>
+            <tbody>
+                <tr v-for="item in currency[0].rates">
+                    <td> {{ item.currency }}</td>
+                    <td> {{ item.code }}</td>
+                    <td> {{ item.mid }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  <script>
+    $("div").attr("style", "margin: auto;")
+    $("table").attr("style", "border: 1px solid black; border-collapse: collapse; width: 75%;")
+    $("table").find('*').attr("style", "border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: left;")
+    
+    var app = new Vue({
+      el: '#app',
+      data: {
+        currency: null
+        }, 
+        methods: {
+            capitalise: function (name) {
+                  return name.charAt(0).toUpperCase() + name.substring(1);
+        }
+                      },
+         mounted: function () {
+         
+         	fetch('http://api.nbp.pl/api/exchangerates/tables/a/?format=json')
+          .then(res => res.json())
+          .then(res => {
+            this.currency = res
+            }
+         )
+      }
+    });
+  </script>
+</body>
+</html>
