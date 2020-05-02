@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <film title="Changeling" director="Clint Eastwood" year='2008'></film>
+    <film title="3096 Tage" director="Sherry Hormann" year='2013'></film>
+    <film title="Wild" director="Jean-Marc Vallée" year='2014'></film>
+</div>
+</body>
+<script>
+    Vue.component('film', {
+      props: ['title', 'director', 'year'],
+      template: `<div>
+                <h3>{{ title }}</h3>
+                <h4>{{ director }}</h3>
+                <h5>{{ year }}</h3>
+                <hr>
+                </div>
+                `
+    })
+
+    new Vue({ el: '#app' })
+
+</script>
+</html>
