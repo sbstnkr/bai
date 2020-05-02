@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      <form>
+        <label for="imie">Imie:</label><br>
+        <input type="text" id="imie" name="imie" v-model="cv.imie"><br>
+        <label for="nazwisko">Nazwisko:</label><br>
+        <input type="text" id="nazwisko" name="nazwisko" v-model="cv.nazwisko"><br>
+        <label for="wiek">Wiek:</label><br>
+        <select v-model.number="cv.wiek">
+          <option v-for="item in 100" v-if="item>=16">{{ item }}</option>
+        </select><br>
+        <label>Plec:</label><br>
+        <input type="radio" id="mezczyzna" name="plec" value="mezczyzna" v-model="cv.plec">
+        <label for="mezczyzna">mezczyzna</label>
+        <input type="radio" id="kobieta" name="plec" value="kobieta" v-model="cv.plec">
+        <label for="kobieta">kobieta</label><br>
+        <label>Wyksztalcenie:</label><br>
+        <input type="radio" id="brak" name="wyksztalcenie" value="brak" v-model="cv.wyksztalcenie">
+        <label for="brak">brak</label><br>
+        <input type="radio" id="podstawowe" name="wyksztalcenie" value="podstawowe" v-model="cv.wyksztalcenie">
+        <label for="podstawowe">podstawowe</label><br>
+        <input type="radio" id="srednie" name="wyksztalcenie" value="srednie" v-model="cv.wyksztalcenie">
+        <label for="srednie">srednie</label><br>
+        <input type="radio" id="wyzsze" name="wyksztalcenie" value="wyzsze" v-model="cv.wyksztalcenie">
+        <label for="wyzsze">wyzsze</label><br>
+        <label>Umiejetnosci:</label><br>
+        <input type="checkbox" id="obslugaKomputera" name="umiejetnosci" value="obsluga komputera" v-model="cv.umiejetnosci">
+        <label for="obsluga komputera">obsluga komputera</label><br>
+        <input type="checkbox" id="prawojazdy" name="umiejetnosci" value="prawo jazdy" v-model="cv.umiejetnosci">
+        <label for="prawo jazdy">prawo jazdy</label><br>
+        <input type="checkbox" id="kreatywnosc" name="umiejetnosci" value="kreatywnosc" v-model="cv.umiejetnosci">
+        <label for="kreatywnosc">kreatywnosc</label><br>
+        <input type="checkbox" id="pracaWzespole" name="umiejetnosci" value="praca w zespole" v-model="cv.umiejetnosci">
+        <label for="praca w zespole">praca w zespole</label><br>
+      </form>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+          cv: {
+              imie: '',
+              nazwisko: '',
+              wiek: null,
+              wyksztalcenie: '',
+              umiejetnosci: []
+              
+          }
+      }
+    });
+  </script>
+</body>
+</html>
