@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+        <form>
+            <label>Tytuł książki:</label>
+            <br>
+            <input type="text" v-model="title">
+            <br>
+            <label>Imię autora:</label>
+            <br>
+            <input type="text" v-model="name">
+            <br>
+            <label>Nazwisko autora:</label>
+            <br>
+            <input type="text" v-model="surname">
+            <br>
+            <input type="button" value="Zapisz" @click="showConsoleLog()">
+        </form>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        title: '',
+        name: '',
+        surname: ''
+      },
+        methods: {
+            showConsoleLog () {
+                console.log(this.title)
+                console.log(this.name)
+                console.log(this.surname)
+            }
+        }
+    });
+  </script>
+
+</body>
+</html>
