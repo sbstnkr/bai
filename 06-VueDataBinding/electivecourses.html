@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      <input type="checkbox" id="hurtownie" value="Hurtownie danych" v-model="kierunki">
+      <label for="hurtownie">Hurtownie danych</label>
+      <input type="checkbox" id="bai" value="Bogate aplikacje internetowe" v-model="kierunki">
+      <label for="bai">Bogate aplikacje internetowe</label>
+      <input type="checkbox" id="dyskretna" value="Matematyka dyskretna" v-model="kierunki">
+      <label for="dyskretna">Matematyka dyskretna</label>
+      <input type="checkbox" id="modelowanie" value="Modelowanie i symulacja komputerowa" v-model="kierunki">
+      <label for="modelowanie">Modelowanie i symulacja komputerowa</label>
+      <input type="checkbox" id="kreatywne" value="Programowanie kreatywne" v-model="kierunki">
+      <label for="kreatywne">Programowanie kreatywne</label>
+      <p v-if="liczba == 1">Zostal wybrany {{ liczba }} przedmiot</p>
+      <p v-if="liczba >= 2 && liczba <= 4">{{ liczba }} przedmioty zostaly wybrane</p>
+      <p v-if="liczba == 5">{{ liczba }} przedmiotow zostalo wybranych</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+          kierunki: [],
+          ilosc: null
+      },
+        computed: {
+        liczba() {
+        return this.ilosc = this.kierunki.length
+    }}
+    });
+  </script>
+
+</body>
+</html>
