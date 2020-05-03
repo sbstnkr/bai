@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <api></api>
+    </div>
+    <script>
+        Vue.component('api', {
+            template: `<div>
+                <p>{{ bored.activity }}</p>
+                <p>{{ bored.type }}</p>
+        </div>`,
+            data: function () {
+                return {
+                    bored: null          
+                }
+            },
+            created () {
+         fetch('https://www.boredapi.com/api/activity/')
+          .then(res => res.json())
+          .then(res => {
+            const bored = res
+            this.bored = bored
+            })
+        }})
+
+        new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+</html>
