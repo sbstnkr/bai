@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>Architektura von Neumanna</h1>
+  <archdata 
+    v-for="item in items"
+    v-bind:id="item.id"
+    v-bind:name="item.name">
+    </archdata>
+</div>
+</body>
+<script>
+    Vue.component('archdata', {
+    template: `<div>
+        <p>{{ id }}: {{ name }}</p>
+        </div>`,
+    props: ['id', 'name']
+})
+
+    new Vue({
+        el: '#app',
+        data: function () { return { items: [
+            { id: 1, name: 'Processing unit' },
+            { id: 2, name: 'Control unit' },
+            { id: 3, name: 'Memory' },
+            { id: 4, name: 'Input and output devices' }
+        ]}
+    }})
+</script>
+</html>
